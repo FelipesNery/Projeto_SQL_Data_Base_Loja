@@ -1,0 +1,37 @@
+--- Aqui estão os códigos para criação das tabelas
+
+--- A primeira tabela a ser criada é a dos atendentes onde tenho o id_atendente, que é a chave primária e um numero serial aleatório criado pelo SQL, em seguida as outras variáveis com seus respectivos tipos
+CREATE TABLE atendentes(
+	id_atendente SERIAL PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	setor VARCHAR(100),
+	funcao VARCHAR(100),
+	salario_base NUMERIC(10));
+
+--- A segunda tabela criada é a de clientes, onde tenho entre as variáveis um id_cliente, onde é a chave primária em série, não se repetindo. Em seguida as outras variaveis importantes para essa tabela.
+CREATE TABLE clientes(
+	id_cliente SERIAL PRIMARY KEY,
+	nome VARCHAR(100),
+	cpf VARCHAR(11),
+	genero VARCHAR(10),
+	telefone VARCHAR(15));
+
+--- A terceira tabela criada é a de estoque, onde também tenho uma chave primária e aleatória para o produto na variável id_produto e demais variaveis que identificam o produto.
+CREATE TABLE estoque (
+	id_produto SERIAL PRIMARY KEY,
+	nome_produto VARCHAR(100),
+	preco_produto NUMERIC(10,2));
+
+--- A quarta tabela criada é a de vendas, nessa, diferente das demais acima, além de apresentar também uma primary key, também apresenta duas chaves estrangeiras, que vem da tabela atendentes e da tabela clientes, além da data da venda.
+CREATE TABLE vendas(
+	id_venda SERIAL PRIMARY KEY,
+	id_atendente INT REFERENCES atendentes(id_atendente),
+	id_cliente INT REFERENCES clientes(id_cliente),
+	data_venda DATE DEFAULT CURRENT_DATE);
+
+--- Por fim, a última tabela a ser criada diz respeito sobre os itens vendidos, onde tenho as chaves estrangeiras vindas das tabelas vendas, estoque e neste a chave primária é a junção das duas.
+CREATE TABLE itens_venda(
+	id_venda INT REFERENCES vendas(id_venda),
+	id_produto INT REFERENCES estoque(id_produto),
+	quantidade_vendido INT NOT NULL,
+	PRIMARY KEY (id_venda, id_produto));
