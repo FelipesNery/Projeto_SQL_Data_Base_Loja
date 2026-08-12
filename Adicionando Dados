@@ -1,1 +1,41 @@
+--- Aqui iremos adicionar uns dados fictícios. 
 
+-- Inserindo Atendentes
+INSERT INTO atendentes(nome,setor,funcao,salario_base)
+VALUES ('Felipe Nery', 'Vendas', 'Vendendor', '2200.00'),
+		('Berenice Miranda', 'Vendas', 'Vendedora', '3000.00'),
+		('Josemar Nascimenro', 'Vendas', 'Vendedor', '4000.00');
+
+--- Inserindo Clientes
+INSERT INTO clientes(nome,cpf,genero,telefone) 
+VALUES ('Maria Souza', '12345678901', 'F', '92988887777'),
+		('João Pereira', '98765432100', 'M', '92977776666'),
+		('Carla Lima', '45612378900', 'F', '92966665555');
+
+
+--- Inserindo o estoque
+INSERT INTO estoque(nome_produto, preco_produto)
+VALUES ('Placa de vídeo RTX3050', '2500.00'),
+		('Placa Mãe B550', '650.00'),
+		('Monitor 24pol', '500.00'),
+		('Fonte 650W', '350.00');
+
+
+--- Inserindo vendas
+INSERT INTO vendas(id_atendente, id_cliente, data_venda)
+VALUES (1, 3, '2025-02-14'),
+		(2, 2, '2025-03-15'),
+		(1, 1, '2025-04-15'),
+		(3, 1, '2025-05-16');
+
+--- Importante!!! Aqui eu coloquei no id_atendente e id_cliente numeros que dizem respeito a primary key serial criado pelo SQL quando eu inseri os dados de atendente e cliente.
+
+
+--- Inserindo itens da venda
+INSERT INTO itens_venda(id_venda, id_produto, quantidade_vendido)
+VALUES (5,1, 2),
+		(6,2, 3),
+		(7,3, 4),
+		(8,4, 5);
+
+--- Importante!!! Aqui eu coloquei no id_venda e id_produto numeros que dizem respeito a primary key serial criado pelo SQL quando eu inseri os dados.
