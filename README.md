@@ -5,3 +5,4 @@ Tal projeto foi criado usando o PgAmin e tem sua estrutura 4 tabelas que se rela
 atendentes → clientes → estoque → vendas → itens_venda.
 
 
+![Example Image](estrutura_tabelas.png)
